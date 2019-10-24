@@ -46,6 +46,7 @@ myChangeHandler = (event) => {
   this.setState({numPlate: event.target.value});
 }
 searchNumPlate = (e) => {
+  this.props.callback(this.state.numPlate);
   e.preventDefault();
   console.log(this.state.numPlate);
 }
@@ -119,12 +120,18 @@ class App extends React.Component {
   addNewProfile = (profileData) => {
     console.log('App',profileData);
   };
+
+  filterNumPlates = numPlate => {
+    this.setState({
+      profile: this.state.profile.filter(employee => employee.numPlate === numPlate);
+    })
+  }
   render(){
     
     return (
       <div>
       <div className="header">{this.props.title}</div>
-      <Form onSubmit={this.addNewProfile}/>
+      <Form onSubmit={this.addNewProfile} callback={this.filterNumPlates}/>
       <CardList profile={this.state.profile}/>
     </div>
     );
