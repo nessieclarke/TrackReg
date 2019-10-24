@@ -4,12 +4,12 @@ import React, {useState} from 'react';
 
 const employeeProfile = [ 
   {firstName: "helen", lastName: "clarke", numPlate: "wk57 000", permitNum: 244, workPhone: 7800000000},
-  {firstName: "hannah", lastName: "ruby", numPlate: "B055 000", permitNum: 300, workPhone: 798000000},
+  {firstName: "hannah", lastName: "roby", numPlate: "B055 000", permitNum: 300, workPhone: 798000000},
   {firstName: "vanessa", lastName: "tsang", numPlate: "RO65 000", permitNum: 100, workPhone: 76000000}];
 
-const CardList = (props) =>(
+const CardList = (props) => (
   <div>
-     {props.profile.map(profile => <Card {...employeeProfile} />)}
+     {props.profile.map(profile => <Card key={profile.numPlate}{...profile} />)}
     
   </div>
 );
@@ -17,7 +17,7 @@ const CardList = (props) =>(
 
 class Card extends React.Component {
   render(){
-    const profile = employeeProfile[0];//this.props; //employeeProfile data
+    const profile = this.props; //employeeProfile data
     return(
       <div className="employee-profile">
         details...
@@ -43,14 +43,15 @@ class Form extends React.Component {
     console.log(
       //this.firstNameInput.current.value
     )
-  };
+  }
+
   render () {
     return (
-      <form onSubmit={}>
+      <form onSubmit={this.handleSubmit}>
         <input 
           type="text" 
           value={this.state.firstName}
-          onChange={event => this.setState({ useName: event.target.value })}
+          onChange={event => this.setState({ firstName: event.target.value })}
           placeholder='name/reg plate/permit'
           //ref={this.firstName}
           required
@@ -60,6 +61,8 @@ class Form extends React.Component {
       </form>
     )
   }
+
+  // console.log(Form);
 }
 //drop down menu input bar just need to work out what part i need and where to put it.
 /*<InputGroup className="mb-3">
@@ -78,12 +81,15 @@ class Form extends React.Component {
         </InputGroup>*/
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      profile: employeeProfile,
-    };
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     profile: employeeProfile,
+  //   };
+  // }
+  state = {
+    profile: employeeProfile,
+  };
   render(){
     
     return (

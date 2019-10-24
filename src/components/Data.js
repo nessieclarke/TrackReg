@@ -17,9 +17,9 @@ module.exports = [{
 
 },
 {
-  "login": "so-wow",
-  "id": 26820864,
-  "type": "User",
+  login: "so-wow",
+  id: 26820864,
+  type: "User",
   "site_admin": false,
   "firstName": "Jess",
   "lastName": "McKenzie",
