@@ -1,6 +1,7 @@
-//import Data from './Data';  this was gonna call in employee data
-import InputGroup from 'react-bootstrap/InputGroup'
+//import employeeProfile from './employeeProfile';  //this was gonna call in employee data
+// import InputGroup from 'react-bootstrap/InputGroup'
 import React, {useState} from 'react';
+import { get } from 'https';
 
 const employeeProfile = [ 
   {firstName: "helen", lastName: "clarke", numPlate: "wk57 000", permitNum: 244, workPhone: 7800000000},
@@ -36,34 +37,59 @@ class Card extends React.Component {
 }
 
 class Form extends React.Component {
-  //firstNameInput = React.createRef();   //tried searching the input bar for firstName. 
-  state = {firstName: ''};
-  handleSubmit = (event) => {
-    event.preventDefault();//prevents page refreshing might not need this
-    console.log(
-      //this.firstNameInput.current.value
-    )
-  }
+  constructor(props){
+  super(props);
+  this.state = { numPlate: ''};
+}
+myChangeHandler = (event) => {
 
-  render () {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input 
-          type="text" 
-          value={this.state.firstName}
-          onChange={event => this.setState({ firstName: event.target.value })}
-          placeholder='name/reg plate/permit'
-          //ref={this.firstName}
-          required
-          />
-        <button>search</button>
+  this.setState({numPlate: event.target.value});
+}
+searchNumPlate = (e) => {
+  e.preventDefault();
+  console.log(this.state.numPlate);
+}
+render(){
+  return(
+    <form onSubmit={this.searchNumPlate}>
+      <h1> hello {this.state.numPlate}</h1>
+      <input
+      type='text'
+      onChange={this.myChangeHandler} />
+      <button type='submit'>search</button>
+    </form>
+    
+  );
+}
+}
+  // //firstNameInput = React.createRef();   //tried searching the input bar for firstName. 
+  // state = {firstName: ''};
+  // handleSubmit = (event) => {
+  //   event.preventDefault();//prevents page refreshing might not need this
+  //   data.get('employeeProfile.js');
+  //   this.props.onSubmit(resp.employeeProfile //to be linked to app componenet
+  //   );
+  // }
+  // render () {
+  //   return (
+  //     <form onSubmit={this.handleSubmit}>
+
+  //       <input 
+  //         type="text" 
+  //         value={this.state.firstName}
+  //         onChange={event => this.setState({ firstName: event.target.value })}
+  //         placeholder='name/reg plate/permit'
+  //         //ref={this.firstNameIput}
+  //         required
+  //         />
+  //       <button>search</button>
         
-      </form>
-    )
-  }
+  //     </form>
+  //   )
+  // }
 
   // console.log(Form);
-}
+// }
 //drop down menu input bar just need to work out what part i need and where to put it.
 /*<InputGroup className="mb-3">
           <DropdownButton
@@ -90,12 +116,15 @@ class App extends React.Component {
   state = {
     profile: employeeProfile,
   };
+  addNewProfile = (profileData) => {
+    console.log('App',profileData);
+  };
   render(){
     
     return (
       <div>
       <div className="header">{this.props.title}</div>
-      <Form />
+      <Form onSubmit={this.addNewProfile}/>
       <CardList profile={this.state.profile}/>
     </div>
     );
