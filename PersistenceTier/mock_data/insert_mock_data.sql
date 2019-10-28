@@ -4,10 +4,10 @@
 INSERT INTO employees (
     permit_number, first_name, last_name, skype_id, email, dept
 ) VALUES
-(244, "Kara", "Brown", "live.kara.brown", "kara@raytheon.co.uk", "Engineering"),
-(252, "Vanessa", "Tsang", "live.vanessa.tsang", "vanessa@raytheon.co.uk", "Engineering"),
-(252, "Paul", "White", "live.paul.white", "paul@raytheon.co.uk", "Finance"),
-(363, "Jess", "Kit", "live.jess.kit", "jess@raytheon.co.uk", "HR");
+(244, "Kara", "Brown", "live.kara.brown", "kara@gmail.co.uk", "Engineering"),
+(252, "Vanessa", "Tsang", "live.vanessa.tsang", "vanessa@gmail.co.uk", "Engineering"),
+(252, "Paul", "White", "live.paul.white", "paul@gmail.co.uk", "Finance"),
+(363, "Jess", "Kit", "live.jess.kit", "jess@gmail.co.uk", "HR");
 
 
 /* MOCK DATA: To insert values into Vehicle table */
@@ -22,13 +22,14 @@ INSERT INTO vehicles (
 ("GR22 SMX", "VW", "Polo", "Blue");
 
 
-/* MOCK DATA: To insert values into Employee_Vehicle table (join table) */
+/* Joining the relationship between employees and vehicles tables (join table). */
 INSERT INTO employees_vehicles (
     employee_id, vehicle_id
 ) VALUES
-(
+(    
+    
     (SELECT employee_id FROM employees WHERE permit_number = 244 LIMIT 1)
-    , (SELECT vehicle_id FROM vehicles WHERE make = "Honda" LIMIT 1)
+    , (SELECT vehicle_id FROM vehicles WHERE make = "Honda" LIMIT 1) 
 ),
 (
     (SELECT employee_id FROM employees WHERE permit_number = 244 LIMIT 1)
@@ -46,3 +47,28 @@ INSERT INTO employees_vehicles (
     (SELECT employee_id FROM employees WHERE permit_number = 363 LIMIT 1)
     , (SELECT vehicle_id FROM vehicles WHERE make = "VW" LIMIT 1)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
