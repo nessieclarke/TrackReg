@@ -23,4 +23,12 @@ server.get('/', (req, res) => {
   `)
 });
 
+server.get('/findByCarReg', (req, res) => {
+  const employeeProfile = [ 
+    {firstName: "helen", lastName: "clarke", numPlate: "wk57 000", permitNum: 244, workPhone: 7800000000},
+    {firstName: "hannah", lastName: "roby", numPlate: "B055 000", permitNum: 300, workPhone: 798000000},
+    {firstName: "vanessa", lastName: "tsang", numPlate: "RO65 000", permitNum: 100, workPhone: 76000000}];
+  res.send(JSON.stringify(employeeProfile));
+});
+
 server.listen(5500, () => console.log('Server is running...'));
