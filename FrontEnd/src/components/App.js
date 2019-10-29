@@ -1,7 +1,15 @@
+//npm run dev-server   in first terminal   npm run dev-bundle  in 2nd terminal.
+
 //import employeeProfile from './employeeProfile';  //this was gonna call in employee data
-// import InputGroup from 'react-bootstrap/InputGroup'
+import InputGroup from 'react-bootstrap/InputGroup';
 import React, {useState} from 'react';
 import { get } from 'https';
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
 
 const employeeProfile = [ 
   {firstName: "helen", lastName: "clarke", numPlate: "wk57 000", permitNum: 244, workPhone: 7800000000},
@@ -63,6 +71,19 @@ render(){
   );
 }
 }
+//-----------------------------------------
+// onSubmit = event => {
+//   event.preventDefault();
+//   const name = this.name.value;
+//   const age = this.age.value;
+//   const info = {name: name, age: age};
+//   const data = this.state.data;
+//   data.push(info);
+//   this.setState({
+//     data: data
+//   });
+//  };
+// //----------------------------------------
   // //firstNameInput = React.createRef();   //tried searching the input bar for firstName. 
   // state = {firstName: ''};
   // handleSubmit = (event) => {
