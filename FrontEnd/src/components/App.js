@@ -123,8 +123,8 @@ class App extends React.Component {
 
   filterNumPlates = numPlate => {
     this.setState({
-      profile: this.state.profile.filter(employee => employee.numPlate === numPlate);
-    })
+      profile: this.state.profile.filter(employee => employee.numPlate === numPlate)
+    });
   }
   render(){
     
@@ -134,7 +134,7 @@ class App extends React.Component {
       <Form onSubmit={this.addNewProfile} callback={this.filterNumPlates}/>
       <CardList profile={this.state.profile}/>
     </div>
-    );
+    );//call in state that submit button look at tictactoe 
   }
 
 }
