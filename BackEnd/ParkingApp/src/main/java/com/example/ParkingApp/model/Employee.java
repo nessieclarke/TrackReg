@@ -3,36 +3,46 @@ package com.example.ParkingApp.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name="employee")
+@Table(name="employees")
 public class Employee {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="employee_id")
     private long employeeId;
-    private String firstName;
-    private String lastName;
+    @Column(name="permit_number")
     private String permitNum;
-    private String dept;
+    @Column(name="first_name")
+    private String firstName;
+    @Column(name="last_name")
+    private String lastName;
+    @Column(name = "skype_id")
     private String workSkype;
+    @Column(name ="email")
     private String workEmail;
+    @Column(name = "dept")
+    private String dept;
 
-    @ManyToMany
-    @JoinTable(name="employee", joinColumns = {@JoinColumn(name="employee_id")},
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="employees_vehicles", joinColumns = {@JoinColumn(name="employee_id")},
             inverseJoinColumns ={@JoinColumn(name="vehicle_id")})
-    public List<Vehicle> vehicles = new ArrayList<>();
+    public List<Vehicle> vehicles; //= new ArrayList<Vehicle>();
+    //public Set<Vehicle> vehicleSet = new HashSet<Vehicle>();
 
+public Employee () {}
 
-
-    public Employee (String firstName, String lastName, String permitNum, String dept, String workSkype, String workEmail) {
+    public Employee (String permitNum, String firstName, String lastName, String workSkype, String workEmail, String dept) {
+        this.permitNum = permitNum;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.permitNum = permitNum;
-        this.dept = dept;
         this.workSkype = workSkype;
         this.workEmail = workEmail;
+        this.dept = dept;
 
 
     }
@@ -40,8 +50,8 @@ public class Employee {
     @Override
     public String toString() {
         return String.format(
-                "Employee [firstName='%s', lastName='%s', permit=%s, dept='%s', workSkype='%s', workEmail='%s']",
-                 firstName, lastName, permitNum, dept, workSkype, workEmail);
+                "Employee [permit=%s, firstName='%s', lastName='%s', workSkype='%s', workEmail='%s', dept='%s']",
+                permitNum, firstName, lastName, workSkype, workEmail, dept);
     }
 
     public Long getId() {
@@ -51,7 +61,6 @@ public class Employee {
     public void setId(long id) {
         this.employeeId = id;
     }
-
 
     public String getFirstName() {
         return firstName;

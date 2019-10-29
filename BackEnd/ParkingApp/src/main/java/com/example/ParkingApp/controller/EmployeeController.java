@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+//@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 @RequestMapping(value ="/employees")
 public class EmployeeController {
 
     @Autowired
-        EmployeeRepository employeeRepository;
+    EmployeeRepository employeeRepository;
 
     @GetMapping(value = "/all")
     public List<Employee> getAll() {
