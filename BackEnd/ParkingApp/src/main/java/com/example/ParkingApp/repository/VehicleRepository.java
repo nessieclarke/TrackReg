@@ -1,9 +1,9 @@
-//package com.example.ParkingApp.repository;
-//
-//import com.example.ParkingApp.model.Vehicle;
-//import org.springframework.data.jpa.repository.JpaRepository;
-//import org.springframework.stereotype.Repository;
-//
-//@Repository
-//public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
-//}
+package com.example.ParkingApp.repository;
+
+import com.example.ParkingApp.model.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface VehicleRepository extends JpaRepository<Employee, Long> {
+}
+
+//do i even need this?

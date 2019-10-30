@@ -25,7 +25,7 @@ public class Vehicle {
 
 
 
-    public Vehicle() {
+    protected Vehicle() {
     }
 
 

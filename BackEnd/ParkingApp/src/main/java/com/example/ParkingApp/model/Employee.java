@@ -32,9 +32,9 @@ public class Employee {
     @JoinTable(name="employees_vehicles", joinColumns = {@JoinColumn(name="employee_id")},
             inverseJoinColumns ={@JoinColumn(name="vehicle_id")})
     public List<Vehicle> vehicles; //= new ArrayList<Vehicle>();
-    //public Set<Vehicle> vehicleSet = new HashSet<Vehicle>();
+    //public Set<Vehicle> vehicleSet = new HashSet<Vehicle>(); not sure if list or set here
 
-public Employee () {}
+protected Employee () {} //An empty constructor is needed to create a new instance via reflection by your persistence framework
 
     public Employee (String permitNum, String firstName, String lastName, String workSkype, String workEmail, String dept) {
         this.permitNum = permitNum;
